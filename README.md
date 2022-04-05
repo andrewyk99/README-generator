@@ -1,7 +1,7 @@
-# Weather Dashboard
+# Professional README Generator [![License: AGPL v3](https://img.shields.io/badge/License-AGPL_v3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)
 
 ## Description
-Blah blah blah
+A project that automatically formats and creates a README file using the information the user gives.
 
 ## Table of Contents
 - [Installation](#installation)
@@ -13,19 +13,21 @@ Blah blah blah
 - [Questions](#questions)
 
 ## Installation
-This is how you do this
+Download code, then in the terminal type 'node index'
 
 ## License
-Open
+Distrubted under GNU AGPLv3.
+License Link: https://choosealicense.com/licenses/agpl-3.0/
+
 
 ## Contributing
-If you want to add to this, do this.
+Fork the repository and add, remove, or change the code in any way you think improves the project!
 
 ## Tests
-If you type in a city, it should give you the weather for the next 5 days.
+Simply answer the questions and check to see if a desired result appears!
 
 ## Credit
-Me, myself, and I
+Many many google searches
 
 ## Questions
 If you have any questions, you can contact me through https://github.com/andrewyk99.
