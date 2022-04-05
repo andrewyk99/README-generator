@@ -3,28 +3,28 @@
 const renderLicenseBadge = license => {
   switch (license) {
     case 'GNU AGPLv3':
-      return '';
+      return '[![License: AGPL v3](https://img.shields.io/badge/License-AGPL_v3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)';
       break;
     case 'GNU GPLv3':
-      return '';
+      return '[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)';
       break;
     case 'GNU LGPLv3':
-      return '';
+      return '[![License: LGPL v3](https://img.shields.io/badge/License-LGPL_v3-blue.svg)](https://www.gnu.org/licenses/lgpl-3.0)';
       break;
     case 'Mozilla Public License':
-      return '';
+      return '[![License: MPL 2.0](https://img.shields.io/badge/License-MPL_2.0-brightgreen.svg)](https://opensource.org/licenses/MPL-2.0)';
       break;
     case 'Apache License 2.0':
-      return '';
+      return '[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)';
       break;
     case 'MIT License':
-      return '';
+      return '[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)';
       break;
     case 'Boost Software License 1.0':
-      return '';
+      return '[![License](https://img.shields.io/badge/License-Boost_1.0-lightblue.svg)](https://www.boost.org/LICENSE_1_0.txt)';
       break;
     case 'The Unlicense':
-      return '';
+      return '[![License: Unlicense](https://img.shields.io/badge/license-Unlicense-blue.svg)](http://unlicense.org/)';
       break;
     default:
       return '';
@@ -67,18 +67,18 @@ const renderLicenseLink = license => {
 // TODO: Create a function that returns the license section of README
 // If there is no license, return an empty string
 const renderLicenseSection = license => {
-  if(!license) {
-    return '';
+  if(license === 'N/A') {
+    return 'This project was not distributed under any license.';
   }
-  return '';
+  else {
+    return 'Distrubted under ' + license + '.'
+  }
 };
 
 // TODO: Create a function to generate markdown for README
 const generateMarkdown = data => {
-  return `## ${data.title}
-
-  ${renderLicenseLink(data)}
-  ${renderLicenseSection(data)}
+  return `${renderLicenseSection(data)}
+License Link: ${renderLicenseLink(data)}
 `;
 };
 

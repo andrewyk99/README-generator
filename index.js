@@ -39,7 +39,8 @@ const promptUser = () => {
             {
                 type: 'list',
                 name: 'license',
-                message: ['GNU AGPLv3', 'GNU GPLv3', 'GNU LGPLv3', 'Mozilla Public License 2.0', 'Apache License 2.0', 'MIT License', 'Boost Software License 1.0', 'The Unlicense']
+                message: 'Please select a license.',
+                choices: ['GNU AGPLv3', 'GNU GPLv3', 'GNU LGPLv3', 'Mozilla Public License 2.0', 'Apache License 2.0', 'MIT License', 'Boost Software License 1.0', 'The Unlicense', 'N/A']
             },
             {
                 type: 'input',
@@ -61,15 +62,18 @@ const promptUser = () => {
                 name: 'github',
                 message: 'Provide a link to your GitHub profile.'
             },
+            {
+                type: 'input',
+                name: 'email',
+                message: 'Type in your email address.'
+            }
         ]);
 };
 
 // TODO: Create a function to write README file
 const writeToFile = (projectTitle, answers) => {
-    const generateRM = 
-`# ${projectTitle}
-
-${renderLicenseBadge}
+    const generateRM = // Hard code the format of the professional README
+`# ${projectTitle} ${renderLicenseBadge(answers.license)}
 
 ## Description
 ${answers.description}
@@ -99,10 +103,11 @@ ${answers.tests}
 ${answers.credit}
 
 ## Questions
-If you have any questions, you can contact me through ${answers.github}.
+If you have any questions, you can contact me through ${answers.email}.
+GitHub Account: ${answers.github}
 `
     return new Promise((resolve, reject) => {
-        fs.writeFile( './' + projectTitle + '.md', generateRM, err => {
+        fs.writeFile( './dist/' + projectTitle + '.md', generateRM, err => {
             if (err) {
                 reject(err);
                 return;
@@ -113,6 +118,7 @@ If you have any questions, you can contact me through ${answers.github}.
             });
         });
     })
+    // Terminal notifies user if the file was created
     .then(writeToFileResponse => {
     console.log(writeToFileResponse)
     });
