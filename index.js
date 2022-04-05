@@ -1,9 +1,9 @@
-// TODO: Include packages needed for this application
+// Packages needed for this application
 const inquirer = require('inquirer');
 const fs = require('fs');
 const {generateMarkdown, renderLicenseBadge} = require('./utils/generateMarkdown.js');
 
-// TODO: Create an array of questions for user input
+// Array of questions for user input
 const promptUser = () => {
     return inquirer
         .prompt([
@@ -39,7 +39,7 @@ const promptUser = () => {
             {
                 type: 'list',
                 name: 'license',
-                message: 'Please select a license.',
+                message: 'Please select a license or "N/A" if one was not used.',
                 choices: ['GNU AGPLv3', 'GNU GPLv3', 'GNU LGPLv3', 'Mozilla Public License 2.0', 'Apache License 2.0', 'MIT License', 'Boost Software License 1.0', 'The Unlicense', 'N/A']
             },
             {
@@ -55,12 +55,12 @@ const promptUser = () => {
             {
                 type: 'input',
                 name: 'credit',
-                message: 'List contributors with their GitHub profiles. If third-party assets used or tutorials, list require attribution and links.'
+                message: 'List contributors with their GitHub profiles. If third-party assets used list required attribution and links.'
             },
             {
                 type: 'input',
                 name: 'github',
-                message: 'Provide a link to your GitHub profile.'
+                message: 'Type in your GitHub account name.'
             },
             {
                 type: 'input',
@@ -70,7 +70,7 @@ const promptUser = () => {
         ]);
 };
 
-// TODO: Create a function to write README file
+// Function to write README file
 const writeToFile = (projectTitle, answers) => {
     const generateRM = // Hard code the format of the professional README
 `# ${projectTitle} ${renderLicenseBadge(answers.license)}
@@ -104,10 +104,10 @@ ${answers.credit}
 
 ## Questions
 If you have any questions, you can contact me through ${answers.email}.
-GitHub Account: ${answers.github}
+GitHub Account: https://github.com/${answers.github}
 `
     return new Promise((resolve, reject) => {
-        fs.writeFile( './dist/' + projectTitle + '.md', generateRM, err => {
+        fs.writeFile( './dist/' + projectTitle + '.md', generateRM, err => { // Creates README file and places it into the 'dist' folder
             if (err) {
                 reject(err);
                 return;
@@ -118,7 +118,7 @@ GitHub Account: ${answers.github}
             });
         });
     })
-    // Terminal notifies user if the file was created
+    // Terminal notifies user if promise had an error, if not it will display a message that the README was created
     .then(writeToFileResponse => {
     console.log(writeToFileResponse)
     });

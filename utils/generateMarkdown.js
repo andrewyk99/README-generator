@@ -1,6 +1,6 @@
 // TODO: Create a function that returns a license badge based on which license is passed in
 // If there is no license, return an empty string
-const renderLicenseBadge = license => {
+const renderLicenseBadge = license => { // link to create badge of appropriate license
   switch (license) {
     case 'GNU AGPLv3':
       return '[![License: AGPL v3](https://img.shields.io/badge/License-AGPL_v3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)';
@@ -31,9 +31,8 @@ const renderLicenseBadge = license => {
   }
 };
 
-// TODO: Create a function that returns the license link
-// If there is no license, return an empty string
-const renderLicenseLink = license => {
+// List of license links and will be pulled according to user input
+const renderLicenseLink = license => { // provides link to specific linense
   switch (license) {
     case 'GNU AGPLv3':
       return 'https://choosealicense.com/licenses/agpl-3.0/';
@@ -59,15 +58,15 @@ const renderLicenseLink = license => {
     case 'The Unlicense':
       return 'https://choosealicense.com/licenses/unlicense/';
       break;
-    default:
+    case 'N/A': // Returns empty if no license was selected
       return '';
+      break;
   }
 };
 
-// TODO: Create a function that returns the license section of README
-// If there is no license, return an empty string
+// Function to write what goes in the 'License' section of the README
 const renderLicenseSection = license => {
-  if(license === 'N/A') {
+  if(license === 'N/A') { // If user selects 'N/A' the README will write out that the project was not distributed under any license
     return 'This project was not distributed under any license.';
   }
   else {
@@ -75,11 +74,10 @@ const renderLicenseSection = license => {
   }
 };
 
-// TODO: Create a function to generate markdown for README
+// Function that dictates what get's filled in that will be placed in the 'License' section
 const generateMarkdown = data => {
-  return `${renderLicenseSection(data)}
-License Link: ${renderLicenseLink(data)}
-`;
+  return `${renderLicenseSection(data)} ${renderLicenseLink(data)}`;
 };
 
+// exports the variables from this page that can be called into 'index.js'
 module.exports = {generateMarkdown, renderLicenseBadge};
