@@ -45,7 +45,7 @@ const promptUser = () => {
             {
                 type: 'input',
                 name: 'contributing',
-                message: 'Provide instructions on how to contribute to this project.'
+                message: 'If you would like others to contribute, write instructions on how to do so. If not, instruct that you do not wish for it to be modified.'
             },
             {
                 type: 'input',
@@ -103,7 +103,7 @@ ${answers.tests}
 ${answers.credit}
 
 ## Questions
-If you have any questions, you can contact me through ${answers.email}.
+If you have any questions, you can contact me through ${answers.email}.<br>
 GitHub Account: https://github.com/${answers.github}
 `
     return new Promise((resolve, reject) => {
@@ -114,7 +114,7 @@ GitHub Account: https://github.com/${answers.github}
             }
             resolve({
                 ok: true,
-                message: 'README created!'
+                message: 'README created! Check the "dist" folder to see your file!'
             });
         });
     })
