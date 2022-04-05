@@ -1,7 +1,6 @@
+# Weather Dashboard
 
-    # Weather Dashboard
-
-    ## Description
+## Description
     Blah blah blah
 
     ## Table of Contents
